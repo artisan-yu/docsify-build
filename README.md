@@ -1,5 +1,9 @@
 # docsify编译工具
 
+> [docsify官网](https://docsify.js.org/#/zh-cn/)
+>
+>[docsify简易入门](https://blog.duokan.xyz/docsify文档网站生成器/快速上手)
+
 将docsify文档每个页面编译成独立的html文件
 
 ## 安装
