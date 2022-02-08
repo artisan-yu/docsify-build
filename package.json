@@ -1,6 +1,6 @@
 {
   "name": "docsify-build",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "build html",
   "main": "index.js",
   "scripts": {

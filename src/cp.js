@@ -1,16 +1,26 @@
 const fs = require('fs')
-const path = require("path");
+const pathTool = require("path");
+const util = require('./util')
 var blacklist = [
-    'push', '.gitignore', '.git', 'index.html', '.idea', 'gen-sidebar.js',
-    'gen-sidebar.min.js','node_modules','.DS_Store','package-lock.json','package.json'
+    'push', '.gitignore',
+    '.git', 'index.html',
+    '.idea', 'gen-sidebar.js',
+    'gen-sidebar.min.js',
+    'node_modules', '.DS_Store',
+    'package-lock.json', 'package.json',
+    'publish'
 ]
 var copy = function (src, dst) {
+    src = util.getFullPath(src)
+    dst = util.getFullPath(dst)
     let paths = fs.readdirSync(src); //同步读取当前目录
-    blacklist.push(dst.slice(dst.lastIndexOf('/')))
-    paths = paths.filter(item => blacklist.includes(item) < 0)
+    paths = paths.filter(item => blacklist.indexOf(item) == -1)
     paths.forEach(function (path) {
-        var _src = src + '/' + path;
-        var _dst = dst + '/' + path;
+        var _src = pathTool.join(src, path)
+        var _dst = pathTool.join(dst, path)
+        if (pathTool.join(_src,_src.slice(_src.lastIndexOf(path)),'/') == pathTool.join(_dst,'/')){
+            return
+        }
         fs.stat(_src, function (err, stats) {  //stats  该对象 包含文件属性
             if (err) throw err;
             if (stats.isFile()) { //如果是个文件则拷贝
@@ -35,7 +45,7 @@ var checkDirectory = function (src, dst, callback) {
 }
 
 module.exports = {
-    copy,mkdir
+    copy, mkdir
 }
 
 function mkdir(dirPath) {
@@ -48,7 +58,7 @@ function mkdir(dirPath) {
     }
     const arr = dirPath.split('/');
     for (const dirElement of arr) {
-        dir = path.join(dir, dirElement)
+        dir = pathTool.join(dir, dirElement)
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
