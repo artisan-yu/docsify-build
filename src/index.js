@@ -1,4 +1,4 @@
-#! Node
+#!/usr/bin/env node
 var path = require('path')
 var cp = require('./cp')
 var Renderer = require('./docsify-build-renderer')
@@ -31,7 +31,7 @@ config.config=customConfig
 config.config.basePath = basePath
 async function build(_config){
     if (!checkIndexHtml()){
-        console.error("请选择正确的文档目录")
+        console.error("please select a correct docsify directory")
         return
     }
     cp.copy(docsPath, outputPath)
