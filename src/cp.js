@@ -6,8 +6,8 @@ var blacklist = [
 ]
 var copy = function (src, dst) {
     let paths = fs.readdirSync(src); //同步读取当前目录
-    blacklist.push(dst)
-    paths = paths.filter(item => blacklist.indexOf(item) < 0)
+    blacklist.push(dst.slice(dst.lastIndexOf('/')))
+    paths = paths.filter(item => blacklist.includes(item) < 0)
     paths.forEach(function (path) {
         var _src = src + '/' + path;
         var _dst = dst + '/' + path;
