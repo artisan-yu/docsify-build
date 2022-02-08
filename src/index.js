@@ -63,7 +63,7 @@ function getContent(_path, _dir = "/") {
     const blacklist = [
         '_sidebar.md',
         'img',
-        "CNAME", "node_modules"
+        "CNAME", "node_modules",'dist'
     ]
     let fsResult = (fs.readdirSync(_path)).filter(item => !((/^\.+.*/).test(item)))
     fsResult = fsResult.filter(item => blacklist.indexOf(item) < 0)
