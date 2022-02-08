@@ -1,8 +1,10 @@
-# docsify编译工具
+# 编译静态文件优化搜索排名-docsify编译工具
 
 > [docsify官网](https://docsify.js.org/#/zh-cn/)
 >
->[docsify简易入门](https://blog.duokan.xyz/docsify文档网站生成器/快速上手)
+> [docsify简易入门](https://blog.duokan.xyz/docsify文档网站生成器/快速上手)
+>
+> [工具源码仓库](https://github.com/ayu-666/docsify-build)
 
 将docsify文档每个页面编译成独立的html文件
 
