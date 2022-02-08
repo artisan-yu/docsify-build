@@ -4,9 +4,6 @@ var blacklist = [
     'push', '.gitignore', '.git', 'index.html', '.idea', 'gen-sidebar.js',
     'gen-sidebar.min.js','node_modules','.DS_Store','package-lock.json','package.json'
 ]
-// let t = "asdasdff"
-//
-// ((t.includes('.html')&&t.includes('?')))
 var copy = function (src, dst) {
     let paths = fs.readdirSync(src); //同步读取当前目录
     blacklist.push(dst.slice(dst.lastIndexOf('/')))
