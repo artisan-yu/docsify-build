@@ -1,5 +1,5 @@
 'use strict';
-
+var _html = '.html'
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 var fs = require('fs');
 var path = require('path');
@@ -404,7 +404,7 @@ function tree(toc, tpl) {
     var innerHTML = '';
     toc.forEach(function (node) {
         var title = node.title.replace(/(<([^>]+)>)/g, '');
-        node.slug = node.slug.slice(0,node.slug.indexOf('?')) + '.html' +node.slug.slice(node.slug.indexOf('?'))
+        node.slug = node.slug.slice(0,node.slug.indexOf('?')) + _html +node.slug.slice(node.slug.indexOf('?'))
         innerHTML += "<li><a class=\"section-link\" href=\"" + (node.slug) + "\" title=\"" + title + "\">" + (node.title) + "</a></li>";
         if (node.children) {
             innerHTML += tree(node.children, tpl);
@@ -769,8 +769,7 @@ var linkCompiler = function (ref) {
         if (title) {
             attrs.push(("title=\"" + title + "\""));
         }
-
-        return ("<a href=\"" + href + '.html' +"\" " + (attrs.join(' ')) + ">" + text + "</a>");
+        return ("<a href=\"" + href + _html +"\" " + (attrs.join(' ')) + ">" + text + "</a>");
     });
 };
 
@@ -1006,7 +1005,7 @@ Compiler.prototype._initRenderer = function _initRenderer () {
         var url = router.toURL(router.getCurrentPath(), { id: slug });
         nextToc.slug = url;
         _self.toc.push(nextToc);
-        url = url = url.slice(0,url.indexOf('?')) + '.html' +url.slice(url.indexOf('?'))
+        url = url = url.slice(0,url.indexOf('?')) + _html +url.slice(url.indexOf('?'))
         return ("<h" + level + " id=\"" + slug + "\"><a href=\"" + url + "\" data-id=\"" + slug + "\" class=\"anchor\"><span>" + str + "</span></a></h" + level + ">");
     };
 

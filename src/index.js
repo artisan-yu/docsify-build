@@ -4,6 +4,7 @@ var cp = require('./cp')
 var Renderer = require('./docsify-build-renderer')
 const fs = require('fs');
 var util = require('./util')
+var _html = '.html'
 var renderer
 const yArgsParser = require("yargs-parser");
 const args = yArgsParser(process.argv.slice(2));
@@ -52,17 +53,6 @@ function checkIndexHtml(){
     return false
 }
 
-
-
-
-
-
-
-
-
-
-
-
 function getContent(_path, _dir = "/") {
     const blacklist = [
         '_sidebar.md',
@@ -94,6 +84,7 @@ function getContent(_path, _dir = "/") {
     }
     return result
 }
+
 function getTitle(path, md) {
     //默认用文件名做标题
     let title = md.substr(0, md.length - 3)
@@ -135,7 +126,7 @@ async function renderAndSave(savePath, url) {
     console.log("\nrender html:\n", url, "\n", savePath, "\n")
     let html = await renderer.renderToString(url)
     savePath = savePath.replace(/readme/gi, 'index')
-    fs.writeFile(savePath+'.html', html, {encoding: 'utf8'}, err => {
+    fs.writeFile(savePath+_html, html, {encoding: 'utf8'}, err => {
         if (err) {
             throw err;
         }
