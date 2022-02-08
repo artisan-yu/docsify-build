@@ -20,6 +20,7 @@ dosify-build args:
     return
 }else if (args['v']){
     console.log('\n','version: ',require('../package.json').version,'\n')
+    return
 }
 var outputPath = args['o']?args['o']:path.join(process.cwd(),'dist')
 var basePath = args['d']?args['d']:'./'
