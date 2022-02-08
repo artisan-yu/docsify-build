@@ -15,8 +15,11 @@ dosify-build args:
     --d docs path default ./
     --t template path
     --c config path
+    --v version
 `);
     return
+}else if (args['v']){
+    console.log('\n','version: ',require('../package.json').version,'\n')
 }
 var outputPath = args['o']?args['o']:path.join(process.cwd(),'dist')
 var basePath = args['d']?args['d']:'./'
