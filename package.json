@@ -1,0 +1,33 @@
+{
+  "name": "docsify-build",
+  "version": "1.0.0",
+  "description": "build html",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./src/index.js"
+  },
+  "bin": {
+    "docsify-build": "./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ayu-666/docsify-build.git"
+  },
+  "author": "yu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayu-666/docsify-build/issues"
+  },
+  "homepage": "https://github.com/ayu-666/docsify-build#readme",
+  "dependencies": {
+    "debug": "^4.3.3",
+    "yargs-parser": "^21.0.0",
+    "marked": "^1.2.9",
+    "node-fetch": "^2.6.6",
+    "prismjs": "^1.26.0",
+    "resolve-pathname": "^3.0.0",
+    "strip-indent": "^3.0.0",
+    "docsify": "^4.12.1",
+    "dompurify": "^2.3.2"
+  }
+}
