@@ -1,3 +1,48 @@
+# docsify编译工具
+
+将docsify文档每个页面编译成独立的html文件
+
+## 安装
+
+```bash
+npm i docsify-build -g
+```
+
+or
+
+```bash
+yarn global add docsify-build
+```
+
+## 使用
+
+```bash
+docsify-build -d ./docs -o ./dist
+```
+
+## 参数列表
+
+```
+--o 输出路径 默认 ./dist
+--d 文档路径 默认 ./
+--t html模版路径
+--c 配置文件路径
+```
+
+## 配置文件示例
+
+```js
+module.exports =  {
+    name: 'name',
+    repo: 'github/repository',
+    routerMode: 'history',
+    loadSidebar: true,
+    auto2top: true
+}
+```
+## 模版示例
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,3 +75,4 @@
     //     window.location.href=c
     // }
 </script>
+```
