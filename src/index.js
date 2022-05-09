@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var path = require('path')
 var cp = require('./cp')
+
 var Renderer = require('./docsify-build-renderer')
 const fs = require('fs');
 var util = require('./util')
@@ -12,6 +13,7 @@ const args = yArgsParser(process.argv.slice(2));
 if (args['help']) {
     console.log(`[build docsify program as html]
 dosify-build args:
+    --m category markdown mix
     --o output path default ./dist
     --d docs path default ./
     --t template path
@@ -42,6 +44,19 @@ async function build(_config){
     cp.copy(docsPath, outputPath)
     renderer = new Renderer(config)
     await generateHtml('/', getContent(docsPath))
+}
+async function mix(){
+    if (!checkIndexHtml()){
+        console.error("please select a correct docsify directory")
+        return
+    }
+    let _struct = getContent(docsPath)
+    console.log(_struct)
+    let layer=0
+}
+
+function mixer(_obj,layer,){
+
 }
 
 function checkIndexHtml(){
@@ -132,5 +147,9 @@ async function renderAndSave(savePath, url) {
         }
     });
 }
+if (args['m']){
+    mix(config)
+}else {
+    build(config)
 
-build(config)
+}
